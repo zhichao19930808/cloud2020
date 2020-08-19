@@ -3,6 +3,7 @@ package xin.zcglory.springCloud.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xin.zcglory.springCloud.dao.PaymentMapper;
@@ -19,8 +20,8 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
-    @GetMapping(value = "/payment/findPaymentById")
-    public CommonResult<Payment> findPaymentById( long id) {
+    @GetMapping(value = "/payment/findPaymentById/{id}")
+    public CommonResult<Payment> findPaymentById( @PathVariable long id) {
         CommonResult<Payment> commonResult = new CommonResult<Payment>();
         Payment payment = paymentService.findPaymentDtoById(id);
 
