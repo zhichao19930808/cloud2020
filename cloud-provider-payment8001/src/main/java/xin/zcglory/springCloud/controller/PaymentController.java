@@ -37,7 +37,7 @@ public class PaymentController {
         return commonResult;
     }
     @PostMapping(value = "/payment/insertPaymentDto")
-    public CommonResult<Integer> insertPaymentDto(Payment payment) {
+    public CommonResult<Integer> insertPaymentDto(@RequestBody Payment payment) {
         CommonResult<Integer> commonResult = new CommonResult<>();
 
         int i = paymentService.insertPaymentDto(payment);
