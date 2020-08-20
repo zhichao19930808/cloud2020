@@ -14,3 +14,12 @@ spring:
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: xin.zcglory.springCloud.entity
+
+
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
