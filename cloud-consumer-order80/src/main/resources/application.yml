@@ -4,6 +4,7 @@ spring:
   application:
     name: cloud-order-service
 
+
 eureka:
   client:
     register-with-eureka: true
