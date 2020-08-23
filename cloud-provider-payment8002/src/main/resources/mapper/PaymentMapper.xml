@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xin.zcglory.springCloud.dao.PaymentMapper">
+
+    <resultMap id="BasePayment" type="xin.zcglory.springCloud.entity.Payment">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="policyNo" property="policyNo" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <insert id="insertPaymentDto" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+        insert into payment (policyNo)
+        values (#{policyNo});
+
+    </insert>
+
+    <select id="findPaymentDtoById" parameterType="Long" resultMap="BasePayment">
+        select *
+        from payment
+        where id = #{id}
+    </select>
+</mapper>
