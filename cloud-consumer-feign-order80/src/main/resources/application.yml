@@ -15,3 +15,6 @@ ribbon:
   ReadTimeout:  5000
   ConnectTimeout: 5000
 
+logging:
+  level:
+    xin.zcglory.springCloud.service.PaymentFeignService: debug
