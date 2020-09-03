@@ -56,5 +56,19 @@ public class PaymentController {
         }
         return commonResult;
     }
+    @GetMapping(value = "/payment/timeOutTest")
+    public CommonResult<Integer> timeOutTest() {
+        CommonResult<Integer> commonResult = new CommonResult<>();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        commonResult.setCode(200);
+            commonResult.setMessage(serverPort+"返回成功");
+
+        return commonResult;
+    }
 
 }

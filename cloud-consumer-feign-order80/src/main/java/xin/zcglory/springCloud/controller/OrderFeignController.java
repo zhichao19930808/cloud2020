@@ -20,4 +20,9 @@ public class OrderFeignController {
         return paymentFeignService.findPaymentById(id);
     }
 
+    @GetMapping(value = "/consumer/openFeign/payment/timeOutTest")
+    public CommonResult timeOutTest() {
+        return paymentFeignService.timeOutTest();
+    }
+
 }
