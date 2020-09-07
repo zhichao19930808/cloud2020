@@ -12,7 +12,6 @@ import javax.annotation.Resource;
 
 @RestController
 @Slf4j
-@DefaultProperties(defaultFallback = "payment_Global_FallbackMethod")
 public class OrderHystrixController {
     @Resource
     private PaymentHystrixService paymentService;
@@ -24,9 +23,6 @@ public class OrderHystrixController {
         return result;
     }
     @GetMapping(value = "/consumer/payment/hystrix/slow")
-    @HystrixCommand(fallbackMethod = "slowFallbackMethod",commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "2000")
-    })
     public String slow(){
         String result = paymentService.slow();
         log.info("*******result:"+result);
@@ -38,14 +34,5 @@ public class OrderHystrixController {
         String result = paymentService.slow();
         log.info("*******result:"+result);
         return result;
-    }
-
-    //兜底方法
-    public String slowFallbackMethod(){
-        return "我是消费者80，对付支付系统繁忙请10秒钟后再试或者自己运行出错请检查自己,(┬＿┬)";
-    }
-    //通用兜底方法
-    public String payment_Global_FallbackMethod(){
-        return "Global异常处理信息，请稍后再试,(┬＿┬)";
     }
 }
